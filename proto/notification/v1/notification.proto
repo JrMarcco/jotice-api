@@ -64,45 +64,45 @@ message Notification {
     SendStrategy strategy = 6;
 }
 
-service NotificationSvc {
-    rpc Send(NotificationSendReq) returns (NotificationSendResp);
-    rpc AsyncSend(NotificationAsyncSendReq) returns (NotificationAsyncSendResp);
-    rpc BatchSend(NotificationBatchSendReq) returns (NotificationBatchSendResp);
-    rpc AsyncBatchSend(NotificationBatchSendReq) returns (NotificationAsyncBatchSendResp);
+service NotificationService {
+    rpc Send(NotificationSendRequest) returns (NotificationSendResponse);
+    rpc AsyncSend(NotificationAsyncSendRequest) returns (NotificationAsyncSendResponse);
+    rpc BatchSend(NotificationBatchSendRequest) returns (NotificationBatchSendResponse);
+    rpc AsyncBatchSend(NotificationBatchSendRequest) returns (NotificationAsyncBatchSendResponse);
 
-    rpc TxPrepare(TxPrepareReq) returns (TxPrepareResp);
-    rpc TxCommit(TxCommitReq) returns (TxCommitResp);
-    rpc TxCancel(TxCancelReq) returns (TxCancelResp);
+    rpc TxPrepare(TxPrepareRequest) returns (TxPrepareResponse);
+    rpc TxCommit(TxCommitRequest) returns (TxCommitResponse);
+    rpc TxCancel(TxCancelRequest) returns (TxCancelResponse);
 }
 
-message NotificationSendReq {
+message NotificationSendRequest {
     Notification notification = 1;
 }
 
-message NotificationSendResp {
+message NotificationSendResponse {
     uint64 notification_id = 1;
     SendStatus status = 2;
     ErrCode err_code = 3;
     string err_msg = 4;
 }
 
-message NotificationAsyncSendReq {
+message NotificationAsyncSendRequest {
     Notification notification = 1;
 }
 
-message NotificationAsyncSendResp {
+message NotificationAsyncSendResponse {
     uint64 notification_id = 1;
     SendStatus status = 2;
     ErrCode err_code = 3;
     string err_msg = 4;
 }
 
-message NotificationBatchSendReq {
+message NotificationBatchSendRequest {
     repeated Notification notifications = 1;
 }
 
-message NotificationBatchSendResp {
-    repeated NotificationSendResp results = 1;
+message NotificationBatchSendResponse {
+    repeated NotificationSendResponse results = 1;
     int32  total_cnt = 2;
     int32  success_cnt = 3;
 }
@@ -111,24 +111,24 @@ message NotificationAsyncBatchSendReq {
     repeated Notification notifications = 1;
 }
 
-message NotificationAsyncBatchSendResp {
+message NotificationAsyncBatchSendResponse {
     repeated uint64 notification_ids = 1;
 }
 
-message TxPrepareReq {
+message TxPrepareRequest {
     Notification notification = 1;
 }
 
-message TxPrepareResp {}
+message TxPrepareResponse {}
 
-message TxCommitReq {
+message TxCommitRequest {
     string key = 1;
 }
 
-message TxCommitResp {}
+message TxCommitResponse {}
 
-message TxCancelReq {
+message TxCancelRequest {
     string key = 1;
 }
 
-message TxCancelResp {}
+message TxCancelResponse {}

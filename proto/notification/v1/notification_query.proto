@@ -6,23 +6,23 @@ import "notification/v1/notification.proto";
 
 option go_package = "github.com/JrMarcco/jotice/api/gen/v1;notification_pb";
 
-service NotificationQuerySvc {
-    rpc Query(NotificationQueryReq) returns (NotificationQueryResp);
-    rpc Batch(NotificationBatchQueryReq) returns (NotificationBatchQueryResp);
+service NotificationQueryService {
+    rpc Query(NotificationQueryRequest) returns (NotificationQueryResponse);
+    rpc Batch(NotificationBatchQueryRequest) returns (NotificationBatchQueryResponse);
 }
 
-message NotificationQueryReq {
+message NotificationQueryRequest {
     string key = 1;
 }
 
-message NotificationQueryResp {
-    NotificationSendResp result = 1;
+message NotificationQueryResponse {
+    NotificationSendResponse result = 1;
 }
 
-message NotificationBatchQueryReq {
+message NotificationBatchQueryRequest {
     repeated string keys = 1;
 }
 
-message NotificationBatchQueryResp {
-    repeated NotificationSendResp results = 1;
+message NotificationBatchQueryResponse {
+    repeated NotificationSendResponse results = 1;
 }
