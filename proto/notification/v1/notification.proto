@@ -4,7 +4,6 @@ package notification.v1;
 
 import "google/protobuf/timestamp.proto";
 
-
 option go_package = "github.com/JrMarcco/jotice/api/gen/v1;notification_pb";
 
 enum Channel {
