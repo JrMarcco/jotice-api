@@ -135,16 +135,61 @@ func (SendStatus) EnumDescriptor() ([]byte, []int) {
 type ErrCode int32
 
 const (
-	ErrCode_ERR_UNSPECIFIED ErrCode = 0
+	ErrCode_ERR_UNSPECIFIED            ErrCode = 0
+	ErrCode_INVALID_PARAM              ErrCode = 1
+	ErrCode_RATE_LIMITED               ErrCode = 2
+	ErrCode_NO_AVAILABLE_CHANNEL       ErrCode = 3
+	ErrCode_NO_AVAILABLE_PROVIDER      ErrCode = 4
+	ErrCode_CHANNEL_NOT_FOUND          ErrCode = 5
+	ErrCode_PROVIDER_NOT_FOUND         ErrCode = 6
+	ErrCode_TEMP_NOT_FOUND             ErrCode = 7
+	ErrCode_BIZ_ID_NOT_FOUND           ErrCode = 8
+	ErrCode_CONFIG_NOT_FOUND           ErrCode = 9
+	ErrCode_QUOTA_CONFIG_NOT_FOUND     ErrCode = 10
+	ErrCode_QUOTA_RECORD_NOT_FOUND     ErrCode = 11
+	ErrCode_NOTIFICATION_NOT_FOUND     ErrCode = 12
+	ErrCode_CREATE_NOTIFICATION_FAILED ErrCode = 13
+	ErrCode_SEND_NOTIFICATION_FAILED   ErrCode = 14
+	ErrCode_QUOTA_NOT_ENOUGH           ErrCode = 15
 )
 
 // Enum value maps for ErrCode.
 var (
 	ErrCode_name = map[int32]string{
-		0: "ERR_UNSPECIFIED",
+		0:  "ERR_UNSPECIFIED",
+		1:  "INVALID_PARAM",
+		2:  "RATE_LIMITED",
+		3:  "NO_AVAILABLE_CHANNEL",
+		4:  "NO_AVAILABLE_PROVIDER",
+		5:  "CHANNEL_NOT_FOUND",
+		6:  "PROVIDER_NOT_FOUND",
+		7:  "TEMP_NOT_FOUND",
+		8:  "BIZ_ID_NOT_FOUND",
+		9:  "CONFIG_NOT_FOUND",
+		10: "QUOTA_CONFIG_NOT_FOUND",
+		11: "QUOTA_RECORD_NOT_FOUND",
+		12: "NOTIFICATION_NOT_FOUND",
+		13: "CREATE_NOTIFICATION_FAILED",
+		14: "SEND_NOTIFICATION_FAILED",
+		15: "QUOTA_NOT_ENOUGH",
 	}
 	ErrCode_value = map[string]int32{
-		"ERR_UNSPECIFIED": 0,
+		"ERR_UNSPECIFIED":            0,
+		"INVALID_PARAM":              1,
+		"RATE_LIMITED":               2,
+		"NO_AVAILABLE_CHANNEL":       3,
+		"NO_AVAILABLE_PROVIDER":      4,
+		"CHANNEL_NOT_FOUND":          5,
+		"PROVIDER_NOT_FOUND":         6,
+		"TEMP_NOT_FOUND":             7,
+		"BIZ_ID_NOT_FOUND":           8,
+		"CONFIG_NOT_FOUND":           9,
+		"QUOTA_CONFIG_NOT_FOUND":     10,
+		"QUOTA_RECORD_NOT_FOUND":     11,
+		"NOTIFICATION_NOT_FOUND":     12,
+		"CREATE_NOTIFICATION_FAILED": 13,
+		"SEND_NOTIFICATION_FAILED":   14,
+		"QUOTA_NOT_ENOUGH":           15,
 	}
 )
 
@@ -1347,9 +1392,25 @@ const file_notification_v1_notification_proto_rawDesc = "" +
 	"\aPENDING\x10\x03\x12\v\n" +
 	"\aSUCCEED\x10\x04\x12\n" +
 	"\n" +
-	"\x06FAILED\x10\x05*\x1e\n" +
+	"\x06FAILED\x10\x05*\x8f\x03\n" +
 	"\aErrCode\x12\x13\n" +
-	"\x0fERR_UNSPECIFIED\x10\x002\xdb\x04\n" +
+	"\x0fERR_UNSPECIFIED\x10\x00\x12\x11\n" +
+	"\rINVALID_PARAM\x10\x01\x12\x10\n" +
+	"\fRATE_LIMITED\x10\x02\x12\x18\n" +
+	"\x14NO_AVAILABLE_CHANNEL\x10\x03\x12\x19\n" +
+	"\x15NO_AVAILABLE_PROVIDER\x10\x04\x12\x15\n" +
+	"\x11CHANNEL_NOT_FOUND\x10\x05\x12\x16\n" +
+	"\x12PROVIDER_NOT_FOUND\x10\x06\x12\x12\n" +
+	"\x0eTEMP_NOT_FOUND\x10\a\x12\x14\n" +
+	"\x10BIZ_ID_NOT_FOUND\x10\b\x12\x14\n" +
+	"\x10CONFIG_NOT_FOUND\x10\t\x12\x1a\n" +
+	"\x16QUOTA_CONFIG_NOT_FOUND\x10\n" +
+	"\x12\x1a\n" +
+	"\x16QUOTA_RECORD_NOT_FOUND\x10\v\x12\x1a\n" +
+	"\x16NOTIFICATION_NOT_FOUND\x10\f\x12\x1e\n" +
+	"\x1aCREATE_NOTIFICATION_FAILED\x10\r\x12\x1c\n" +
+	"\x18SEND_NOTIFICATION_FAILED\x10\x0e\x12\x14\n" +
+	"\x10QUOTA_NOT_ENOUGH\x10\x0f2\xdb\x04\n" +
 	"\x13NotificationService\x12C\n" +
 	"\x04Send\x12\x1c.notification.v1.SendRequest\x1a\x1d.notification.v1.SendResponse\x12R\n" +
 	"\tAsyncSend\x12!.notification.v1.AsyncSendRequest\x1a\".notification.v1.AsyncSendResponse\x12R\n" +
