@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client.v1;
+
+import "notification/v1/notification.proto";
+
+option go_package = "github.com/JrMarcco/jotice-api/api/v1";
+
+service CallbackService {
+  rpc SendResultNotify(SendResultNotifyRequest) returns (SendResultNotifyResponse);
+}
+
+message SendResultNotifyRequest {
+  uint64 notification_id = 1;
+  notification.v1.SendRequest ori_request = 2;
+  notification.v1.SendResponse result = 3;
+}
+
+message SendResultNotifyResponse {
+  bool success = 1;
+}

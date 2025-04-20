@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client.v1;
+
+option go_package = "github.com/JrMarcco/jotice-api/api/v1";
+
+service TxCheckService {
+  rpc Check(TxCheckServiceCheckRequest) returns (TxCheckServiceCheckResponse);
+}
+
+message TxCheckServiceCheckRequest {
+  string key = 1;
+}
+
+message TxCheckServiceCheckResponse {
+  enum ResponseStatus {
+    STATUS_UNSPECIFIED = 0;
+    COMMITTED = 1;
+    CANCELED = 2;
+  }
+}
