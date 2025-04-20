@@ -4,7 +4,7 @@ package notification.v1;
 
 import "notification/v1/notification.proto";
 
-option go_package = "github.com/JrMarcco/jotice-api/api/v1";
+option go_package = "github.com/JrMarcco/jotice-api/api/notification/v1";
 
 service NotificationQueryService {
   rpc Query(QueryRequest) returns (QueryResponse);

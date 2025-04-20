@@ -4,7 +4,7 @@ package client.v1;
 
 import "notification/v1/notification.proto";
 
-option go_package = "github.com/JrMarcco/jotice-api/api/v1";
+option go_package = "github.com/JrMarcco/jotice-api/api/client/v1";
 
 service CallbackService {
   rpc SendResultNotify(SendResultNotifyRequest) returns (SendResultNotifyResponse);

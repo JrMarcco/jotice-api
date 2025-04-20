@@ -7,7 +7,7 @@
 package clientv1
 
 import (
-	v1 "github.com/JrMarcco/jotice-api/notification/v1"
+	v1 "github.com/JrMarcco/jotice-api/api/notification/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -139,8 +139,8 @@ const file_client_v1_notification_proto_rawDesc = "" +
 	"\x18SendResultNotifyResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2n\n" +
 	"\x0fCallbackService\x12[\n" +
-	"\x10SendResultNotify\x12\".client.v1.SendResultNotifyRequest\x1a#.client.v1.SendResultNotifyResponseB\x9a\x01\n" +
-	"\rcom.client.v1B\x11NotificationProtoP\x01Z1github.com/JrMarcco/jotice-api/client/v1;clientv1\xa2\x02\x03CXX\xaa\x02\tClient.V1\xca\x02\tClient\\V1\xe2\x02\x15Client\\V1\\GPBMetadata\xea\x02\n" +
+	"\x10SendResultNotify\x12\".client.v1.SendResultNotifyRequest\x1a#.client.v1.SendResultNotifyResponseB\x9e\x01\n" +
+	"\rcom.client.v1B\x11NotificationProtoP\x01Z5github.com/JrMarcco/jotice-api/api/client/v1;clientv1\xa2\x02\x03CXX\xaa\x02\tClient.V1\xca\x02\tClient\\V1\xe2\x02\x15Client\\V1\\GPBMetadata\xea\x02\n" +
 	"Client::V1b\x06proto3"
 
 var (

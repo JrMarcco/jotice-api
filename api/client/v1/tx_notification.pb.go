@@ -163,8 +163,8 @@ const file_client_v1_tx_notification_proto_rawDesc = "" +
 	"\tCOMMITTED\x10\x01\x12\f\n" +
 	"\bCANCELED\x10\x022h\n" +
 	"\x0eTxCheckService\x12V\n" +
-	"\x05Check\x12%.client.v1.TxCheckServiceCheckRequest\x1a&.client.v1.TxCheckServiceCheckResponseB\x9c\x01\n" +
-	"\rcom.client.v1B\x13TxNotificationProtoP\x01Z1github.com/JrMarcco/jotice-api/client/v1;clientv1\xa2\x02\x03CXX\xaa\x02\tClient.V1\xca\x02\tClient\\V1\xe2\x02\x15Client\\V1\\GPBMetadata\xea\x02\n" +
+	"\x05Check\x12%.client.v1.TxCheckServiceCheckRequest\x1a&.client.v1.TxCheckServiceCheckResponseB\xa0\x01\n" +
+	"\rcom.client.v1B\x13TxNotificationProtoP\x01Z5github.com/JrMarcco/jotice-api/api/client/v1;clientv1\xa2\x02\x03CXX\xaa\x02\tClient.V1\xca\x02\tClient\\V1\xe2\x02\x15Client\\V1\\GPBMetadata\xea\x02\n" +
 	"Client::V1b\x06proto3"
 
 var (

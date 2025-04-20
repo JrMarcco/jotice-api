@@ -212,8 +212,8 @@ const file_notification_v1_notification_query_proto_rawDesc = "" +
 	"\aresults\x18\x01 \x03(\v2\x1d.notification.v1.SendResponseR\aresults2\xaa\x01\n" +
 	"\x18NotificationQueryService\x12F\n" +
 	"\x05Query\x12\x1d.notification.v1.QueryRequest\x1a\x1e.notification.v1.QueryResponse\x12F\n" +
-	"\x05Batch\x12\x1d.notification.v1.BatchRequest\x1a\x1e.notification.v1.BatchResponseB\xc9\x01\n" +
-	"\x13com.notification.v1B\x16NotificationQueryProtoP\x01Z=github.com/JrMarcco/jotice-api/notification/v1;notificationv1\xa2\x02\x03NXX\xaa\x02\x0fNotification.V1\xca\x02\x0fNotification\\V1\xe2\x02\x1bNotification\\V1\\GPBMetadata\xea\x02\x10Notification::V1b\x06proto3"
+	"\x05Batch\x12\x1d.notification.v1.BatchRequest\x1a\x1e.notification.v1.BatchResponseB\xcd\x01\n" +
+	"\x13com.notification.v1B\x16NotificationQueryProtoP\x01ZAgithub.com/JrMarcco/jotice-api/api/notification/v1;notificationv1\xa2\x02\x03NXX\xaa\x02\x0fNotification.V1\xca\x02\x0fNotification\\V1\xe2\x02\x1bNotification\\V1\\GPBMetadata\xea\x02\x10Notification::V1b\x06proto3"
 
 var (
 	file_notification_v1_notification_query_proto_rawDescOnce sync.Once

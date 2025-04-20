@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package client.v1;
 
-option go_package = "github.com/JrMarcco/jotice-api/api/v1";
+option go_package = "github.com/JrMarcco/jotice-api/api/client/v1";
 
 service TxCheckService {
   rpc Check(TxCheckServiceCheckRequest) returns (TxCheckServiceCheckResponse);
