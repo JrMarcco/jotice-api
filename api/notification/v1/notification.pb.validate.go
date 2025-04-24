@@ -1050,6 +1050,113 @@ var _ interface {
 	ErrorName() string
 } = NotificationValidationError{}
 
+// Validate checks the field values on SendResult with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *SendResult) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SendResult with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in SendResultMultiError, or
+// nil if none found.
+func (m *SendResult) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SendResult) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for NotificationId
+
+	// no validation rules for Status
+
+	// no validation rules for ErrCode
+
+	// no validation rules for ErrMsg
+
+	if len(errors) > 0 {
+		return SendResultMultiError(errors)
+	}
+
+	return nil
+}
+
+// SendResultMultiError is an error wrapping multiple validation errors
+// returned by SendResult.ValidateAll() if the designated constraints aren't met.
+type SendResultMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SendResultMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SendResultMultiError) AllErrors() []error { return m }
+
+// SendResultValidationError is the validation error returned by
+// SendResult.Validate if the designated constraints aren't met.
+type SendResultValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SendResultValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SendResultValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SendResultValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SendResultValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SendResultValidationError) ErrorName() string { return "SendResultValidationError" }
+
+// Error satisfies the builtin error interface
+func (e SendResultValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSendResult.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SendResultValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SendResultValidationError{}
+
 // Validate checks the field values on SendRequest with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -1200,13 +1307,34 @@ func (m *SendResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for NotificationId
-
-	// no validation rules for Status
-
-	// no validation rules for ErrCode
-
-	// no validation rules for ErrMsg
+	if all {
+		switch v := interface{}(m.GetResult()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SendResponseValidationError{
+					field:  "Result",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SendResponseValidationError{
+					field:  "Result",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetResult()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SendResponseValidationError{
+				field:  "Result",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return SendResponseMultiError(errors)
@@ -1436,13 +1564,34 @@ func (m *AsyncSendResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for NotificationId
-
-	// no validation rules for Status
-
-	// no validation rules for ErrCode
-
-	// no validation rules for ErrMsg
+	if all {
+		switch v := interface{}(m.GetResult()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AsyncSendResponseValidationError{
+					field:  "Result",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AsyncSendResponseValidationError{
+					field:  "Result",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetResult()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AsyncSendResponseValidationError{
+				field:  "Result",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return AsyncSendResponseMultiError(errors)

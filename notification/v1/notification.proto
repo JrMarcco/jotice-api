@@ -90,15 +90,19 @@ service NotificationService {
   rpc TxCancel(TxCancelRequest) returns (TxCancelResponse);
 }
 
+message SendResult {
+  uint64 notification_id = 1;
+  SendStatus status = 2;
+  ErrCode err_code = 3;
+  string err_msg = 4;
+}
+
 message SendRequest {
   Notification notification = 1;
 }
 
 message SendResponse {
-  uint64 notification_id = 1;
-  SendStatus status = 2;
-  ErrCode err_code = 3;
-  string err_msg = 4;
+  SendResult result = 1;
 }
 
 message AsyncSendRequest {
@@ -106,10 +110,7 @@ message AsyncSendRequest {
 }
 
 message AsyncSendResponse {
-  uint64 notification_id = 1;
-  SendStatus status = 2;
-  ErrCode err_code = 3;
-  string err_msg = 4;
+  SendResult result = 1;
 }
 
 message BatchSendRequest {
@@ -117,7 +118,7 @@ message BatchSendRequest {
 }
 
 message BatchSendResponse {
-  repeated SendResponse results = 1;
+  repeated SendResult results = 1;
   int32 total_cnt = 2;
   int32 success_cnt = 3;
 }
